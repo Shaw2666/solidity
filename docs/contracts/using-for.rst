@@ -8,7 +8,7 @@ Using For
 
 The directive ``using A for B;`` can be used to attach
 functions (``A``) as operators to user-defined value types
-or as member functions to any type (``B``).
+and structs or as member functions to any type (``B``).
 The member functions receive the object they are called on
 as their first parameter (like the ``self`` variable in Python).
 The operator functions receive operands as parameters.
