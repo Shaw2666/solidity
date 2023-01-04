@@ -680,7 +680,7 @@ bool AsmAnalyzer::validateInstructions(std::string const& _instructionIdentifier
 		m_errorReporter.warning(
 			3242_error,
 			_location,
-			"\"difficulty\" was replaced by \"prevrandao\" in the VM version paris and does not behave as before. It now returns a random number based on the beacon chain."
+			"Since the VM version paris, \"difficulty\" was replaced by \"prevrandao\", which now returns a random number based on the beacon chain."
 		);
 	else if (_instructionIdentifier == "prevrandao" && !m_evmVersion.supportsPrevRandao())
 		m_errorReporter.warning(
