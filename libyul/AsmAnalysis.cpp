@@ -684,12 +684,25 @@ bool AsmAnalyzer::validateInstructions(std::string const& _instructionIdentifier
 			_location,
 			"Since the VM version paris, \"difficulty\" was replaced by \"prevrandao\", which now returns a random number based on the beacon chain."
 		);
-	else if (_instructionIdentifier == "prevrandao" && !m_evmVersion.supportsPrevRandao())
-		m_errorReporter.warning(
-			5761_error,
-			_location,
-			"\"prevrandao\" is not supported by the VM version and will be treated like \"difficulty\"."
-		);
+	else if (_instructionIdentifier == "prevrandao")
+	{
+		if (!m_evmVersion.supportsPrevRandao())
+			m_errorReporter.warning(
+				5761_error,
+				_location,
+				"\"prevrandao\" is not supported by the VM version and will be treated like \"difficulty\"."
+			);
+		else if (m_currentScope->exists(YulString(_instructionIdentifier)))
+				m_errorReporter.warning(
+					4089_error,
+					_location,
+					fmt::format(
+						"The \"{instruction}\" instruction is reserved in VM \"{version}\" and its use as custom identifier will be dropped in Solidity version 0.9.0.",
+						fmt::arg("instruction", _instructionIdentifier),
+						fmt::arg("version", m_evmVersion.name())
+					)
+				);
+	}
 	auto const builtin = EVMDialect::strictAssemblyForEVM(EVMVersion{}).builtin(YulString(_instructionIdentifier));
 	if (builtin && builtin->instruction.has_value())
 		return validateInstructions(builtin->instruction.value(), _location);
