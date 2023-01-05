@@ -479,9 +479,7 @@ Expression Parser::parseExpression()
 		{
 			if (currentToken() == Token::LParen)
 				return parseCall(std::move(operation));
-			// TODO: We temporarily allow the use of `prevrandao` builtin as a user-defined identifier to avoid breaking changes.
-			// This should be removed in 0.9.0.
-			if (m_dialect.builtin(_identifier.name) && _identifier.name.str() != "prevrandao")
+			if (m_dialect.builtin(_identifier.name))
 				fatalParserError(
 					7104_error,
 					nativeLocationOf(_identifier),
@@ -676,9 +674,7 @@ TypedName Parser::parseTypedName()
 YulString Parser::expectAsmIdentifier()
 {
 	YulString name{currentLiteral()};
-	// TODO: We temporarily allow the use of `prevrandao` builtin as a user-defined identifier to avoid breaking changes.
-	// This should be removed in 0.9.0.
-	if (currentToken() == Token::Identifier && m_dialect.builtin(name) && name.str() != "prevrandao")
+	if (currentToken() == Token::Identifier && m_dialect.builtin(name))
 		fatalParserError(5568_error, "Cannot use builtin function name \"" + name.str() + "\" as identifier name.");
 	// NOTE: We keep the expectation here to ensure the correct source location for the error above.
 	expectToken(Token::Identifier);

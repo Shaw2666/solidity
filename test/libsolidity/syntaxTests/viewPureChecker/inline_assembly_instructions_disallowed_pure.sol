@@ -32,7 +32,6 @@ contract C {
             pop(coinbase())
             pop(timestamp())
             pop(number())
-            pop(difficulty())
             pop(prevrandao())
             pop(gaslimit())
 
@@ -45,8 +44,7 @@ contract C {
 // ====
 // EVMVersion: >=paris
 // ----
-// Warning 3242: (1042-1052): Since the VM version paris, "difficulty" was replaced by "prevrandao", which now returns a random number based on the beacon chain.
-// Warning 5740: (672-1113): Unreachable code.
+// Warning 5740: (672-1083): Unreachable code.
 // TypeError 2527: (79-87): Function declared as pure, but this expression (potentially) reads from the environment or state and thus requires "view".
 // TypeError 8961: (101-113): Function cannot be declared as pure because this expression (potentially) modifies the state.
 // TypeError 2527: (130-135): Function declared as pure, but this expression (potentially) reads from the environment or state and thus requires "view".
@@ -79,5 +77,4 @@ contract C {
 // TypeError 2527: (987-998): Function declared as pure, but this expression (potentially) reads from the environment or state and thus requires "view".
 // TypeError 2527: (1016-1024): Function declared as pure, but this expression (potentially) reads from the environment or state and thus requires "view".
 // TypeError 2527: (1042-1054): Function declared as pure, but this expression (potentially) reads from the environment or state and thus requires "view".
-// TypeError 2527: (1072-1084): Function declared as pure, but this expression (potentially) reads from the environment or state and thus requires "view".
-// TypeError 2527: (1102-1112): Function declared as pure, but this expression (potentially) reads from the environment or state and thus requires "view".
+// TypeError 2527: (1072-1082): Function declared as pure, but this expression (potentially) reads from the environment or state and thus requires "view".

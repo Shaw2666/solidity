@@ -646,9 +646,7 @@ void AsmAnalyzer::expectValidIdentifier(YulString _identifier, SourceLocation co
 			"\"" + _identifier.str() + "\" is not a valid identifier (contains consecutive dots)."
 		);
 
-	// TODO: We temporarily allow the use of `prevrandao` builtin as a user-defined identifier to avoid breaking changes.
-	// This should be removed in 0.9.0.
-	if (m_dialect.reservedIdentifier(_identifier) && _identifier.str() != "prevrandao")
+	if (m_dialect.reservedIdentifier(_identifier))
 		m_errorReporter.declarationError(
 			5017_error,
 			_location,
@@ -678,31 +676,6 @@ void AsmAnalyzer::expectType(YulString _expectedType, YulString _givenType, Sour
 
 bool AsmAnalyzer::validateInstructions(std::string const& _instructionIdentifier, langutil::SourceLocation const& _location)
 {
-	if (_instructionIdentifier == "difficulty" && m_evmVersion.supportsPrevRandao())
-		m_errorReporter.warning(
-			3242_error,
-			_location,
-			"Since the VM version paris, \"difficulty\" was replaced by \"prevrandao\", which now returns a random number based on the beacon chain."
-		);
-	else if (_instructionIdentifier == "prevrandao")
-	{
-		if (!m_evmVersion.supportsPrevRandao())
-			m_errorReporter.warning(
-				5761_error,
-				_location,
-				"\"prevrandao\" is not supported by the VM version and will be treated like \"difficulty\"."
-			);
-		else if (m_currentScope->exists(YulString(_instructionIdentifier)))
-				m_errorReporter.warning(
-					4089_error,
-					_location,
-					fmt::format(
-						"The \"{instruction}\" instruction is reserved in VM \"{version}\" and its use as custom identifier will be dropped in Solidity version 0.9.0.",
-						fmt::arg("instruction", _instructionIdentifier),
-						fmt::arg("version", m_evmVersion.name())
-					)
-				);
-	}
 	auto const builtin = EVMDialect::strictAssemblyForEVM(EVMVersion{}).builtin(YulString(_instructionIdentifier));
 	if (builtin && builtin->instruction.has_value())
 		return validateInstructions(builtin->instruction.value(), _location);

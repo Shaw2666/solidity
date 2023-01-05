@@ -73,7 +73,6 @@ contract C {
             pop(coinbase())
             pop(timestamp())
             pop(number())
-            pop(difficulty())
             pop(prevrandao())
             pop(gaslimit())
 
@@ -86,9 +85,8 @@ contract C {
 // ====
 // EVMVersion: >=paris
 // ----
-// Warning 3242: (2174-2184): Since the VM version paris, "difficulty" was replaced by "prevrandao", which now returns a random number based on the beacon chain.
 // Warning 5740: (89-1716): Unreachable code.
 // Warning 5740: (1729-1741): Unreachable code.
 // Warning 5740: (1754-1769): Unreachable code.
 // Warning 5740: (1782-1791): Unreachable code.
-// Warning 5740: (1804-2245): Unreachable code.
+// Warning 5740: (1804-2215): Unreachable code.

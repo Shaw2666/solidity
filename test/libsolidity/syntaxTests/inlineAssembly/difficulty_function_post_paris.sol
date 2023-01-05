@@ -18,4 +18,5 @@ contract C {
 // ====
 // EVMVersion: >=paris
 // ----
-// ParserError 5568: (101-111): Cannot use builtin function name "difficulty" as identifier name.
+// DeclarationError 5017: (101-111): The identifier "difficulty" is reserved and can not be used.
+// DeclarationError 5017: (255-323): The identifier "difficulty" is reserved and can not be used.

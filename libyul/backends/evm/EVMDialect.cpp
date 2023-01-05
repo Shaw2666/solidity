@@ -148,6 +148,13 @@ set<YulString> createReservedIdentifiers(langutil::EVMVersion _evmVersion)
 
 map<YulString, BuiltinFunctionForEVM> createBuiltins(langutil::EVMVersion _evmVersion, bool _objectAccess)
 {
+
+	// Exclude prevrandao as builtin for VMs before paris and difficulty for VMs after paris.
+	auto prevRandaoException = [&](string const& _instrName) -> bool
+	{
+		return (_instrName == "prevrandao" && _evmVersion < langutil::EVMVersion::paris()) || (_instrName == "difficulty" && _evmVersion >= langutil::EVMVersion::paris());
+	};
+
 	map<YulString, BuiltinFunctionForEVM> builtins;
 	for (auto const& instr: evmasm::c_instructions)
 	{
@@ -161,7 +168,8 @@ map<YulString, BuiltinFunctionForEVM> createBuiltins(langutil::EVMVersion _evmVe
 			opcode != evmasm::Instruction::JUMP &&
 			opcode != evmasm::Instruction::JUMPI &&
 			opcode != evmasm::Instruction::JUMPDEST &&
-			_evmVersion.hasOpcode(opcode)
+			_evmVersion.hasOpcode(opcode) &&
+			!prevRandaoException(name)
 		)
 			builtins.emplace(createEVMFunction(_evmVersion, name, opcode));
 	}
