@@ -646,7 +646,9 @@ void AsmAnalyzer::expectValidIdentifier(YulString _identifier, SourceLocation co
 			"\"" + _identifier.str() + "\" is not a valid identifier (contains consecutive dots)."
 		);
 
-	if (m_dialect.reservedIdentifier(_identifier))
+	// TODO: We temporarily allow the use of `prevrandao` builtin as a user-defined identifier to avoid breaking changes.
+	// This should be removed in 0.9.0.
+	if (m_dialect.reservedIdentifier(_identifier) && _identifier.str() != "prevrandao")
 		m_errorReporter.declarationError(
 			5017_error,
 			_location,
