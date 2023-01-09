@@ -327,13 +327,12 @@ string AssemblyItem::toAssemblyText(Assembly const& _assembly) const
 	return text;
 }
 
+// Note: This method is mainly used for debugging purposes.
 ostream& solidity::evmasm::operator<<(ostream& _out, AssemblyItem const& _item)
 {
 	switch (_item.type())
 	{
 	case Operation:
-		// TODO:prevrandao: can we always use the latest EVM version here?
-		// Depending on the evm version the name of the instruction will differ.
 		_out << " " << instructionInfo(_item.instruction(), EVMVersion()).name;
 		if (_item.instruction() == Instruction::JUMP || _item.instruction() == Instruction::JUMPI)
 			_out << "\t" << _item.getJumpTypeAsString();

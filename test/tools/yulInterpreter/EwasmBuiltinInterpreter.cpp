@@ -597,7 +597,6 @@ u256 EwasmBuiltinInterpreter::readU256(uint64_t _offset, size_t _croppedTo)
 
 void EwasmBuiltinInterpreter::logTrace(evmasm::Instruction _instruction, std::vector<u256> const& _arguments, bytes const& _data)
 {
-	//TODO:prevrandao: only output prevrandao based on the latest evm version?
 	logTrace(evmasm::instructionInfo(_instruction, langutil::EVMVersion()).name, _arguments, _data);
 }
 
