@@ -213,7 +213,14 @@ std::vector<Declaration const*> NameAndTypeResolver::pathFromCurrentScopeWithAll
 
 		pathDeclarations.push_back(candidates.front());
 
-		candidates = m_scopes.at(candidates.front())->resolveName(_path[i]);
+		candidates = m_scopes.at(candidates.front())->resolveName(
+			_path[i],
+			ResolvingSettings{
+				false /* recursive */,
+				true /* alsoInvisible */,
+				false /* onlyVisibleAsUnqualifiedNames */
+			}
+		);
 	}
 	if (candidates.size() == 1)
 	{

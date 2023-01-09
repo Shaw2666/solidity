@@ -32,6 +32,7 @@ Bugfixes:
  * SMTChecker: Fix internal error when using user defined types as mapping indices or struct members.
  * SMTChecker: Fix internal error when deleting struct member of function type.
  * TypeChecker: Fix bug where private library functions could be attached with ``using for`` outside of their declaration scope.
+ * TypeChecker: Also allow external library functions in ``using for``.
 
 
 ### 0.8.17 (2022-09-08)
