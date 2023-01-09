@@ -421,9 +421,9 @@ u256 EwasmBuiltinInterpreter::evalEthBuiltin(string const& _fun, vector<uint64_t
 		writeU128(arg[0], m_state.basefee);
 		return 0;
 	}
-	else if (_fun == "getBlockDifficulty" || _fun == "getBlockPrevrandao")
+	else if (_fun == "getBlockDifficulty")
 	{
-		writeU256(arg[0], m_state.prevrandao);
+		writeU256(arg[0], m_state.difficulty);
 		return 0;
 	}
 	else if (_fun == "externalCodeCopy")
