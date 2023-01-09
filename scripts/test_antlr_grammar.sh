@@ -122,8 +122,8 @@ done < <(
       # Skipping a test with "let basefee := ..."
       grep -v -E 'inlineAssembly/basefee_berlin_function.sol' |
       # Skipping tests with "let prevrandao := ..."
-      grep -v -E 'inlineAssembly/prevrandao_pre_paris_function.sol' |
-      grep -v -E 'inlineAssembly/prevrandao_reserved_paris.sol' |
+      grep -v -E 'inlineAssembly/prevrandao_function_pre_paris.sol' |
+      grep -v -E 'inlineAssembly/prevrandao_function_post_paris.sol' |
       # Skipping license error, unrelated to the grammar
       grep -v -E 'license/license_double5.sol' |
       grep -v -E 'license/license_hidden_unicode.sol' |
