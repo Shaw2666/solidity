@@ -175,7 +175,7 @@ std::map<std::string, Instruction> const solidity::evmasm::c_instructions =
 	{ "SELFDESTRUCT", Instruction::SELFDESTRUCT }
 };
 
-/// @note InstructionInfo is assumed to be the same across all EVM versions.
+/// @note InstructionInfo is assumed to be the same across all EVM versions except for the instruction name.
 static std::map<Instruction, InstructionInfo> const c_instructionInfo =
 { //												Add, Args, Ret, SideEffects, GasPriceTier
 	{ Instruction::STOP,		{ "STOP",			0, 0, 0, true,  Tier::Zero } },

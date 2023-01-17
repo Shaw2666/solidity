@@ -327,7 +327,7 @@ string AssemblyItem::toAssemblyText(Assembly const& _assembly) const
 	return text;
 }
 
-// Note: This method is mainly used for debugging purposes.
+// Note: This method is exclusively used for debugging.
 ostream& solidity::evmasm::operator<<(ostream& _out, AssemblyItem const& _item)
 {
 	switch (_item.type())
