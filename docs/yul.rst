@@ -947,9 +947,10 @@ the ``dup`` and ``swap`` instructions as well as ``jump`` instructions, labels a
   The remaining bytes will retain their values as of before the call.
 
 .. note::
-  The `difficulty()` instruction is disallowed in EVM version >= Paris. Please consider using `prevrandao()` instead.
-  With the Paris network upgrade the semantics of ``difficulty`` have been changed.
-  It now returns the value of ``prevrandao``, which is a 256-bit value, whereas the highest recorded
+  The `difficulty()` instruction is disallowed in EVM version >= Paris.
+  With the Paris network upgrade the semantics of the instruction that was previously called
+  ``difficulty`` have been changed and the instruction was renamed to ``prevrandao``.
+  It can now return arbitrary values in the full 256-bit range, whereas the highest recorded
   difficulty value within Ethash was ~54 bits.
   This change is described in `EIP-4399 <https://eips.ethereum.org/EIPS/eip-4399>`_.
   Please note that irrelevant to which EVM version is selected in the compiler, the semantics of
