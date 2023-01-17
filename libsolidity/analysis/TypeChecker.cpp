@@ -1159,9 +1159,7 @@ void TypeChecker::endVisit(TryStatement const& _tryStatement)
 					m_errorReporter.typeError(
 						9908_error,
 						clause.location(),
-						"This catch clause type cannot be used on the selected EVM version (" +
-						m_evmVersion.name() +
-						"). You need at least a Byzantium-compatible EVM or use `catch { ... }`."
+						"This catch clause type cannot be used on the selected EVM version. You need at least a Byzantium-compatible EVM or use `catch { ... }`."
 					);
 			}
 		}
@@ -1171,9 +1169,7 @@ void TypeChecker::endVisit(TryStatement const& _tryStatement)
 				m_errorReporter.typeError(
 					1812_error,
 					clause.location(),
-					"This catch clause type cannot be used on the selected EVM version (" +
-					m_evmVersion.name() +
-					"). You need at least a Byzantium-compatible EVM or use `catch { ... }`."
+					"This catch clause type cannot be used on the selected EVM version. You need at least a Byzantium-compatible EVM or use `catch { ... }`."
 				);
 
 			if (clause.errorName() == "Error")
