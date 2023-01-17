@@ -1824,7 +1824,7 @@ void IRGeneratorForStatements::endVisit(MemberAccess const& _memberAccess)
 			define(_memberAccess) << "timestamp()\n";
 		else if (member == "difficulty" || member == "prevrandao")
 		{
-			if (m_context.evmVersion().supportsPrevRandao())
+			if (m_context.evmVersion().hasPrevRandao())
 				define(_memberAccess) << "prevrandao()\n";
 			else
 				define(_memberAccess) << "difficulty()\n";

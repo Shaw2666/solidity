@@ -331,7 +331,7 @@ vector<YulString> AsmAnalyzer::operator()(FunctionCall const& _funCall)
 	auto prevrandaoInScopeException = [&](YulString const& _instrName) -> bool
 	{
 		return _instrName.str() == "prevrandao"
-			&& !m_evmVersion.supportsPrevRandao()
+			&& !m_evmVersion.hasPrevRandao()
 			&& inScope(_instrName);
 	};
 
