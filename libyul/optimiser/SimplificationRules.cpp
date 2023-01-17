@@ -235,7 +235,7 @@ evmasm::Instruction Pattern::instruction() const
 	return m_instruction;
 }
 
-Expression Pattern::toExpression(shared_ptr<DebugData const> const& _debugData) const
+Expression Pattern::toExpression(shared_ptr<DebugData const> const& _debugData, langutil::EVMVersion _evmVersion) const
 {
 	if (matchGroup())
 		return ASTCopier().translate(matchGroupValue());
@@ -248,10 +248,9 @@ Expression Pattern::toExpression(shared_ptr<DebugData const> const& _debugData) 
 	{
 		vector<Expression> arguments;
 		for (auto const& arg: m_arguments)
-			arguments.emplace_back(arg.toExpression(_debugData));
+			arguments.emplace_back(arg.toExpression(_debugData, _evmVersion));
 
-		//TODO:prevrandao: check if default EVM version is fine here.
-		string name = util::toLower(instructionInfo(m_instruction, EVMVersion()).name);
+		string name = util::toLower(instructionInfo(m_instruction, _evmVersion).name);
 
 		return FunctionCall{_debugData,
 			Identifier{_debugData, YulString{name}},
