@@ -168,8 +168,8 @@ size_t AssemblyItem::bytesRequired(size_t _addressLength, Precision _precision) 
 size_t AssemblyItem::arguments() const
 {
 	if (type() == Operation)
-		// The latest EVMVersion is used here, since the InstructionInfo is assumed to
-		// be the same for all EVM versions.
+		// The latest EVMVersion is used here, since the InstructionInfo is assumed to be
+		// the same across all EVM versions except for the instruction name.
 		return static_cast<size_t>(instructionInfo(instruction(), EVMVersion()).args);
 	else if (type() == VerbatimBytecode)
 		return get<0>(*m_verbatimBytecode);
@@ -184,8 +184,8 @@ size_t AssemblyItem::returnValues() const
 	switch (m_type)
 	{
 	case Operation:
-		// The latest EVMVersion is used here, since the InstructionInfo is assumed to
-		// be the same for all EVM versions.
+		// The latest EVMVersion is used here, since the InstructionInfo is assumed to be
+		// the same across all EVM versions except for the instruction name.
 		return static_cast<size_t>(instructionInfo(instruction(), EVMVersion()).ret);
 	case Push:
 	case PushTag:
