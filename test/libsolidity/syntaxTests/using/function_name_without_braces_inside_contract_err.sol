@@ -2,7 +2,6 @@ function f(uint x) pure { }
 
 contract C {
     using f for uint;
-    
     function g(uint x) public pure {
         x.f();
     }
