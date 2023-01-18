@@ -249,8 +249,7 @@ bool StackCompressor::run(
 		"Need to run the function grouper before the stack compressor."
 	);
 	bool usesOptimizedCodeGenerator = false;
-	auto evmDialect = dynamic_cast<EVMDialect const*>(&_dialect);
-	if (evmDialect)
+	if (auto evmDialect = dynamic_cast<EVMDialect const*>(&_dialect))
 		usesOptimizedCodeGenerator =
 			_optimizeStackAllocation &&
 			evmDialect->evmVersion().canOverchargeGasForCall() &&

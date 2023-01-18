@@ -181,8 +181,7 @@ void CodeCost::visit(Expression const& _expression)
 
 void CodeCost::addInstructionCost(evmasm::Instruction _instruction)
 {
-	EVMDialect const* evmDialect = dynamic_cast<EVMDialect const*>(&m_dialect);
-	evmasm::Tier gasPriceTier = evmasm::instructionInfo(_instruction, evmDialect->evmVersion()).gasPriceTier;
+	evmasm::Tier gasPriceTier = evmasm::instructionInfo(_instruction, evmVersionFromDialect(m_dialect)).gasPriceTier;
 	if (gasPriceTier < evmasm::Tier::VeryLow)
 		m_cost -= 1;
 	else if (gasPriceTier < evmasm::Tier::High)
