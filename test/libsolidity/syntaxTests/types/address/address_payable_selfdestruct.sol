@@ -4,3 +4,4 @@ contract C {
     }
 }
 // ----
+// Warning 5159: (64-76): "selfdestruct" has been deprecated.

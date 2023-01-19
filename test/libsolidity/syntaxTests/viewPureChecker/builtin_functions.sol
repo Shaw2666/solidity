@@ -19,3 +19,4 @@ contract C {
     receive() payable external {}
 }
 // ----
+// Warning 5159: (122-134): "selfdestruct" has been deprecated.
