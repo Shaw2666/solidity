@@ -3310,7 +3310,7 @@ bool TypeChecker::visit(MemberAccess const& _memberAccess)
 				m_errorReporter.warning(
 					9432_error,
 					_memberAccess.location(),
-					"\"prevrandao\" is not supported by the VM version and will be treated like \"difficulty\"."
+					"\"prevrandao\" is not supported by the VM version and will be treated as \"difficulty\"."
 				);
 			else if (memberName == "difficulty" && m_evmVersion.hasPrevRandao())
 				m_errorReporter.warning(
