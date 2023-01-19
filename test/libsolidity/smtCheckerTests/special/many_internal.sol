@@ -5,7 +5,7 @@ contract C
 	}
 	function g() internal {
 		assert(msg.sender == block.coinbase);
-		assert(block.difficulty == block.gaslimit);
+		assert(block.prevrandao == block.gaslimit);
 		assert(block.number == block.timestamp);
 		assert(tx.gasprice == msg.value);
 		assert(tx.origin == msg.sender);

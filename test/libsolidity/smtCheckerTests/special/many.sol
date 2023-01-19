@@ -2,7 +2,7 @@ contract C
 {
 	function f() public payable {
 		assert(msg.sender == block.coinbase);
-		assert(block.difficulty == block.gaslimit);
+		assert(block.prevrandao == block.gaslimit);
 		assert(block.number == block.timestamp);
 		assert(tx.gasprice == msg.value);
 		assert(tx.origin == msg.sender);

@@ -69,6 +69,7 @@ private:
  *   - block chainid
  *   - block coinbase
  *   - block difficulty
+ *   - block prevrandao
  *   - block gaslimit
  *   - block number
  *   - block timestamp
@@ -136,6 +137,7 @@ public:
 	smtutil::Expression txTypeConstraints() const;
 	smtutil::Expression txNonPayableConstraint() const;
 	smtutil::Expression blockhash(smtutil::Expression _blockNumber) const;
+	smtutil::Expression evmParisConstraints() const;
 	//@}
 
 	/// Crypto functions.
@@ -191,6 +193,7 @@ private:
 		m_context
 	};
 
+	// TODO: Remove `block.difficulty` in 0.9.0
 	BlockchainVariable m_tx{
 		"tx",
 		{
@@ -198,6 +201,7 @@ private:
 			{"block.chainid", smtutil::SortProvider::uintSort},
 			{"block.coinbase", smt::smtSort(*TypeProvider::address())},
 			{"block.difficulty", smtutil::SortProvider::uintSort},
+			{"block.prevrandao", smtutil::SortProvider::uintSort},
 			{"block.gaslimit", smtutil::SortProvider::uintSort},
 			{"block.number", smtutil::SortProvider::uintSort},
 			{"block.timestamp", smtutil::SortProvider::uintSort},

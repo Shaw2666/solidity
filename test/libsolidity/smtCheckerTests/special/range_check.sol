@@ -15,8 +15,8 @@ contract C {
 		assert(block.timestamp <= 2**256 - 1);
 		assert(block.chainid >= 0);
 		assert(block.chainid <= 2**256 - 1);
-		assert(block.difficulty >= 0);
-		assert(block.difficulty <= 2**256 - 1);
+		assert(block.prevrandao > 2**64);
+		assert(block.prevrandao <= 2**256 - 1);
 		assert(block.gaslimit >= 0);
 		assert(block.gaslimit <= 2**256 - 1);
 		assert(block.number >= 0);
@@ -42,8 +42,8 @@ contract D {
 			assert(block.timestamp <= 2**256 - 1);
 			assert(block.chainid >= 0);
 			assert(block.chainid <= 2**256 - 1);
-			assert(block.difficulty >= 0);
-			assert(block.difficulty <= 2**256 - 1);
+			assert(block.prevrandao > 2**64);
+			assert(block.prevrandao <= 2**256 - 1);
 			assert(block.gaslimit >= 0);
 			assert(block.gaslimit <= 2**256 - 1);
 			assert(block.number >= 0);

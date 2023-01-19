@@ -30,7 +30,8 @@ contract C {
 }
 // ====
 // SMTEngine: all
-// SMTSolvers: z3
 // SMTIgnoreOS: macos
+// SMTSolvers: z3
 // ----
-// Info 1180: Contract invariant(s) for :C:\n!(x >= 7)\n
+// Warning 6328: (406-419): CHC: Assertion violation might happen here.
+// Warning 4661: (406-419): BMC: Assertion violation happens here.

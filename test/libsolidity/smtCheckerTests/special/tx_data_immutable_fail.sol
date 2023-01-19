@@ -1,7 +1,7 @@
 contract C {
 	bytes32 bhash;
 	address coin;
-	uint dif;
+	uint prevrandao;
 	uint glimit;
 	uint number;
 	uint tstamp;
@@ -15,7 +15,7 @@ contract C {
 	function f() public payable {
 		bhash = blockhash(12);
 		coin = block.coinbase;
-		dif = block.difficulty;
+		prevrandao = block.prevrandao;
 		glimit = block.gaslimit;
 		number = block.number;
 		tstamp = block.timestamp;
@@ -30,7 +30,7 @@ contract C {
 
 		assert(bhash == blockhash(122));
 		assert(coin != block.coinbase);
-		assert(dif != block.difficulty);
+		assert(prevrandao != block.prevrandao);
 		assert(glimit != block.gaslimit);
 		assert(number != block.number);
 		assert(tstamp != block.timestamp);
@@ -45,7 +45,7 @@ contract C {
 	function fi() internal view {
 		assert(bhash == blockhash(122));
 		assert(coin != block.coinbase);
-		assert(dif != block.difficulty);
+		assert(prevrandao != block.prevrandao);
 		assert(glimit != block.gaslimit);
 		assert(number != block.number);
 		assert(tstamp != block.timestamp);
@@ -61,27 +61,27 @@ contract C {
 // SMTEngine: all
 // SMTIgnoreCex: yes
 // ----
-// Warning 6328: (512-543): CHC: Assertion violation happens here.
-// Warning 6328: (547-577): CHC: Assertion violation happens here.
-// Warning 6328: (581-612): CHC: Assertion violation happens here.
-// Warning 6328: (616-648): CHC: Assertion violation happens here.
-// Warning 6328: (652-682): CHC: Assertion violation happens here.
-// Warning 6328: (686-719): CHC: Assertion violation happens here.
-// Warning 6328: (723-762): CHC: Assertion violation happens here.
-// Warning 6328: (766-794): CHC: Assertion violation happens here.
-// Warning 6328: (798-820): CHC: Assertion violation happens here.
-// Warning 6328: (824-850): CHC: Assertion violation happens here.
-// Warning 6328: (854-883): CHC: Assertion violation happens here.
-// Warning 6328: (887-914): CHC: Assertion violation happens here.
-// Warning 6328: (953-984): CHC: Assertion violation happens here.
-// Warning 6328: (988-1018): CHC: Assertion violation happens here.
-// Warning 6328: (1022-1053): CHC: Assertion violation happens here.
-// Warning 6328: (1057-1089): CHC: Assertion violation happens here.
-// Warning 6328: (1093-1123): CHC: Assertion violation happens here.
-// Warning 6328: (1127-1160): CHC: Assertion violation happens here.
-// Warning 6328: (1164-1203): CHC: Assertion violation happens here.
-// Warning 6328: (1207-1235): CHC: Assertion violation happens here.
-// Warning 6328: (1239-1261): CHC: Assertion violation happens here.
-// Warning 6328: (1265-1291): CHC: Assertion violation happens here.
-// Warning 6328: (1295-1324): CHC: Assertion violation happens here.
-// Warning 6328: (1328-1355): CHC: Assertion violation happens here.
+// Warning 6328: (526-557): CHC: Assertion violation happens here.
+// Warning 6328: (561-591): CHC: Assertion violation happens here.
+// Warning 6328: (595-633): CHC: Assertion violation happens here.
+// Warning 6328: (637-669): CHC: Assertion violation happens here.
+// Warning 6328: (673-703): CHC: Assertion violation happens here.
+// Warning 6328: (707-740): CHC: Assertion violation happens here.
+// Warning 6328: (744-783): CHC: Assertion violation happens here.
+// Warning 6328: (787-815): CHC: Assertion violation happens here.
+// Warning 6328: (819-841): CHC: Assertion violation happens here.
+// Warning 6328: (845-871): CHC: Assertion violation happens here.
+// Warning 6328: (875-904): CHC: Assertion violation happens here.
+// Warning 6328: (908-935): CHC: Assertion violation happens here.
+// Warning 6328: (974-1005): CHC: Assertion violation happens here.
+// Warning 6328: (1009-1039): CHC: Assertion violation happens here.
+// Warning 6328: (1043-1081): CHC: Assertion violation happens here.
+// Warning 6328: (1085-1117): CHC: Assertion violation happens here.
+// Warning 6328: (1121-1151): CHC: Assertion violation happens here.
+// Warning 6328: (1155-1188): CHC: Assertion violation happens here.
+// Warning 6328: (1192-1231): CHC: Assertion violation happens here.
+// Warning 6328: (1235-1263): CHC: Assertion violation happens here.
+// Warning 6328: (1267-1289): CHC: Assertion violation happens here.
+// Warning 6328: (1293-1319): CHC: Assertion violation happens here.
+// Warning 6328: (1323-1352): CHC: Assertion violation happens here.
+// Warning 6328: (1356-1383): CHC: Assertion violation happens here.

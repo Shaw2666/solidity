@@ -638,11 +638,13 @@ bool Predicate::fillArray(smtutil::Expression const& _expr, vector<string>& _arr
 
 map<string, optional<string>> Predicate::readTxVars(smtutil::Expression const& _tx) const
 {
+	// TODO: Remove `block.difficulty` in 0.9.0
 	map<string, Type const*> const txVars{
 		{"block.basefee", TypeProvider::uint256()},
 		{"block.chainid", TypeProvider::uint256()},
 		{"block.coinbase", TypeProvider::address()},
 		{"block.difficulty", TypeProvider::uint256()},
+		{"block.prevrandao", TypeProvider::uint256()},
 		{"block.gaslimit", TypeProvider::uint256()},
 		{"block.number", TypeProvider::uint256()},
 		{"block.timestamp", TypeProvider::uint256()},

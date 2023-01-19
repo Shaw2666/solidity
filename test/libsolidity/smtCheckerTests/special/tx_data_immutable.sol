@@ -1,7 +1,7 @@
 contract C {
 	bytes32 bhash;
 	address coin;
-	uint dif;
+	uint prevrandao;
 	uint glimit;
 	uint number;
 	uint tstamp;
@@ -15,7 +15,7 @@ contract C {
 	function f() public payable {
 		bhash = blockhash(12);
 		coin = block.coinbase;
-		dif = block.difficulty;
+		prevrandao = block.prevrandao;
 		glimit = block.gaslimit;
 		number = block.number;
 		tstamp = block.timestamp;
@@ -30,7 +30,7 @@ contract C {
 
 		assert(bhash == blockhash(12));
 		assert(coin == block.coinbase);
-		assert(dif == block.difficulty);
+		assert(prevrandao == block.prevrandao);
 		assert(glimit == block.gaslimit);
 		assert(number == block.number);
 		assert(tstamp == block.timestamp);
@@ -45,7 +45,7 @@ contract C {
 	function fi() internal view {
 		assert(bhash == blockhash(12));
 		assert(coin == block.coinbase);
-		assert(dif == block.difficulty);
+		assert(prevrandao == block.prevrandao);
 		assert(glimit == block.gaslimit);
 		assert(number == block.number);
 		assert(tstamp == block.timestamp);
